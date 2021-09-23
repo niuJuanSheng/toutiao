@@ -1,6 +1,13 @@
 <template>
   <ul class="catagtory">
-    <li class="select">开发者资讯</li>
+    <li
+      :class="{ select: currentCategory === v.id }"
+      v-for="v in category"
+      :key="v.id"
+    >
+      {{ v.name }}
+    </li>
+    <!-- <li class="select">开发者资讯</li>
     <li>ios</li>
     <li>c++</li>
     <li>android</li>
@@ -26,12 +33,17 @@
     <li>数码产品</li>
     <li>html</li>
     <li>软件测试</li>
-    <li>测试开发</li>
+    <li>测试开发</li> -->
   </ul>
 </template>
 
 <script>
-export default {}
+import { mapGetters } from 'vuex'
+export default {
+  computed: {
+    ...mapGetters(['category', 'currentCategory'])
+  }
+}
 </script>
 
 <style scoped lang="less"></style>
