@@ -1,6 +1,7 @@
 <template>
   <ul class="catagtory">
     <li
+      @click="$store.commit('category/updateCurrentCategory', v.id)"
       :class="{ select: currentCategory === v.id }"
       v-for="v in category"
       :key="v.id"
@@ -42,6 +43,9 @@ import { mapGetters } from 'vuex'
 export default {
   computed: {
     ...mapGetters(['category', 'currentCategory'])
+  },
+  created() {
+    this.$store.dispatch('category/getCategory')
   }
 }
 </script>
